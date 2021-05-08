@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <title>Home</title>
+    <style type="text/css">
+        .container {
+            width: 100%;
+            max-width: 1024px;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+
+        .container:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        nav a {
+            text-decoration: none;
+            line-height: 38px;
+        }
+
+        nav {
+            float: right;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav li {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div th:fragment="content">
+    <header>
+        <div class="container">
+                <ul>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+        </div>
+    </header>
+</div>
+</body>
+</html>

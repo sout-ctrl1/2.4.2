@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div th:replace="header :: content"></div>
+<div th:switch="${users}">
+    <h2 th:case="null">No users found!!!</h2>
+    <div th:case="*">
+        <h2>Users</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Login</th>
+                <th>Password</th>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Roles</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.getId()}"></td>
+                <td th:text="${user.login}"></td>
+                <td th:text="${user.password}"></td>
+                <td th:text="${user.getName()}"></td>
+                <td th:text="${user.getLastName()}"></td>
+                <td>
+                    <ul>
+                        <li th:each="role : ${user.getRoles()}">
+                            <div th:text="${role.getName()}"></div>
+                        </li>
+                    </ul>
+                </td>
+                <td><a th:href="@{updateUser/{id}(id=${user.getId()})}">Edit</a></td>
+                <td><a th:href="@{deleteUser/{id}(id=${user.getId()})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/addUser">Add user</a></p>
+</div>
+</body>
+</html>
